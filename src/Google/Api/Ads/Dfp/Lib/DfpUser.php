@@ -33,7 +33,7 @@ require_once 'Google/Api/Ads/Common/Lib/AdsUser.php';
 require_once 'Google/Api/Ads/Common/Util/ApiPropertiesUtils.php';
 require_once 'Google/Api/Ads/Common/Util/AuthToken.php';
 require_once 'Google/Api/Ads/Common/Util/DeprecationUtils.php';
-require_once 'Google/Api/Ads/Common/Util/Logger.php';
+require_once 'Google/Api/Ads/Common/Util/AdLogger.php';
 require_once 'Google/Api/Ads/Dfp/Lib/DfpSoapClientFactory.php';
 
 /**

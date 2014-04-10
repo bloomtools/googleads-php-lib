@@ -30,7 +30,7 @@
 require_once dirname(__FILE__) . '/../Lib/AdWordsUser.php';
 require_once dirname(__FILE__) . '/../../Common/Util/CurlUtils.php';
 require_once dirname(__FILE__) . '/../../Common/Util/DeprecationUtils.php';
-require_once dirname(__FILE__) . '/../../Common/Util/Logger.php';
+require_once dirname(__FILE__) . '/../../Common/Util/AdLogger.php';
 require_once dirname(__FILE__) . '/../../Common/Util/XmlUtils.php';
 
 /**
@@ -351,7 +351,7 @@ class ReportUtils {
    */
   private static function LogRequest($requestHeaders, $responseCode,
       $params = NULL, $exception = NULL) {
-    $level = isset($exception) ? Logger::$ERROR : Logger::$INFO;
+    $level = isset($exception) ? AdLogger::$ERROR : AdLogger::$INFO;
     $messageParts = array();
     $messageParts[] = trim($requestHeaders);
     $messageParts[] = ''; // Blank line for readability.
@@ -366,7 +366,7 @@ class ReportUtils {
     }
     $messageParts[] = ''; // Blank line for readability.
     $message = implode("\n", $messageParts);
-    Logger::Log(self::$LOG_NAME, $message, $level);
+    AdLogger::Log(self::$LOG_NAME, $message, $level);
   }
 }
 

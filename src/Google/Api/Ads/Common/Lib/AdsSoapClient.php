@@ -31,7 +31,7 @@
  * @author     Vincent Tsao
  */
 require_once 'Google/Api/Ads/Common/Lib/AdsUser.php';
-require_once 'Google/Api/Ads/Common/Util/Logger.php';
+require_once 'Google/Api/Ads/Common/Util/AdLogger.php';
 require_once 'Google/Api/Ads/Common/Util/MapUtils.php';
 require_once 'Google/Api/Ads/Common/Util/SoapRequestXmlFixer.php';
 require_once 'Google/Api/Ads/Common/Util/XmlUtils.php';
@@ -255,13 +255,13 @@ abstract class AdsSoapClient extends SoapClient {
           . $domException->getMessage(), E_USER_NOTICE);
     }
 
-    $level = isset($e) ? Logger::$ERROR : Logger::$INFO;
+    $level = isset($e) ? AdLogger::$ERROR : AdLogger::$INFO;
     $this->LogSoapXml($level);
     $this->LogRequestInfo($level);
   }
 
   /**
-   * Logs the SOAP XML to the Logger::$SOAP_XML_LOG log after the request has
+   * Logs the SOAP XML to the AdLogger::$SOAP_XML_LOG log after the request has
    * transformed by PrepareRequest() and both the request and response have
    * been sanitized by RemoveSensitiveInfo().
    * @param string $level the log level to use
@@ -275,11 +275,11 @@ abstract class AdsSoapClient extends SoapClient {
         XmlUtils::PrettyPrint($this->lastRequest),
         trim($this->__getLastResponseHeaders()),
         XmlUtils::PrettyPrint($this->lastResponse));
-    Logger::log(Logger::$SOAP_XML_LOG, $message, $level);
+    AdLogger::log(AdLogger::$SOAP_XML_LOG, $message, $level);
   }
 
   /**
-   * Logs the request info to the Logger::$REQUEST_INFO_LOG log the request has
+   * Logs the request info to the AdLogger::$REQUEST_INFO_LOG log the request has
    * transformed by PrepareRequest() and both the request has been sanitized by
    * RemoveSensitiveInfo().
    * @param string $level the log level to use
@@ -290,7 +290,7 @@ abstract class AdsSoapClient extends SoapClient {
   private function LogRequestInfo($level) {
     $message = $this->GenerateRequestInfoMessage($this->lastRequest,
         $this->lastResponse, $this->lastSoapFault);
-    Logger::log(Logger::$REQUEST_INFO_LOG, $message, $level);
+    AdLogger::log(AdLogger::$REQUEST_INFO_LOG, $message, $level);
   }
 
   /**

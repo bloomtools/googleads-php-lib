@@ -45,7 +45,7 @@
  * @package GoogleApiAdsCommon
  * @subpackage Util
  */
-class Logger {
+class AdLogger {
 
   /**
    * Logs all incomming and outgoing SOAP XML.
@@ -102,7 +102,7 @@ class Logger {
   private static $timeFormat = 'M d Y H:i:s.u';
 
   /**
-   * The Logger class is not meant to have any instances.
+   * The AdLogger class is not meant to have any instances.
    * @access private
    */
   private function __construct() {}

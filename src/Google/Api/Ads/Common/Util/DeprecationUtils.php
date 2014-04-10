@@ -49,7 +49,7 @@ abstract class DeprecationUtils {
       self::Log("Current authentication method DEPRECATED. Please switch to"
           . " OAuth2 as authentication method. For more information, see:\n"
           . " https://developers.google.com/accounts/docs/"
-          . "AuthForInstalledApps", Logger::$ERROR);
+          . "AuthForInstalledApps", AdLogger::$ERROR);
     }
   }
 
@@ -93,8 +93,8 @@ abstract class DeprecationUtils {
    * @param string $level is the message level to log
    */
   protected static function Log($message, $level = NULL) {
-      Logger::log(Logger::$SOAP_XML_LOG, $message, $level);
-      Logger::log(Logger::$REQUEST_INFO_LOG, $message, $level);
+      AdLogger::log(AdLogger::$SOAP_XML_LOG, $message, $level);
+      AdLogger::log(AdLogger::$REQUEST_INFO_LOG, $message, $level);
   }
 }
 

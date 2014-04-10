@@ -28,7 +28,7 @@
  * @author     Eric Koleda
  * @author     Vincent Tsao
  */
-require_once 'Google/Api/Ads/Common/Util/Logger.php';
+require_once 'Google/Api/Ads/Common/Util/AdLogger.php';
 require_once 'Google/Api/Ads/Common/Util/SimpleOAuth2Handler.php';
 require_once 'Google/Api/Ads/Common/Lib/SoapClientFactory.php';
 require_once 'Google/Api/Ads/Common/Lib/ValidationException.php';
@@ -141,12 +141,12 @@ abstract class AdsUser {
    * directory.
    */
   protected function InitLogs() {
-    Logger::LogToFile(Logger::$SOAP_XML_LOG,
+    AdLogger::LogToFile(AdLogger::$SOAP_XML_LOG,
         $this->logsDirectory . "/soap_xml.log");
-    Logger::LogToFile(Logger::$REQUEST_INFO_LOG,
+    AdLogger::LogToFile(AdLogger::$REQUEST_INFO_LOG,
         $this->logsDirectory . "/request_info.log");
-    Logger::SetLogLevel(Logger::$SOAP_XML_LOG, Logger::$FATAL);
-    Logger::SetLogLevel(Logger::$REQUEST_INFO_LOG, Logger::$FATAL);
+    AdLogger::SetLogLevel(AdLogger::$SOAP_XML_LOG, AdLogger::$FATAL);
+    AdLogger::SetLogLevel(AdLogger::$REQUEST_INFO_LOG, AdLogger::$FATAL);
   }
 
   /**
@@ -154,24 +154,24 @@ abstract class AdsUser {
    * the full SOAP XML request and response only when an error occurs.
    */
   public function LogDefaults() {
-    Logger::SetLogLevel(Logger::$SOAP_XML_LOG, Logger::$ERROR);
-    Logger::SetLogLevel(Logger::$REQUEST_INFO_LOG, Logger::$INFO);
+    AdLogger::SetLogLevel(AdLogger::$SOAP_XML_LOG, AdLogger::$ERROR);
+    AdLogger::SetLogLevel(AdLogger::$REQUEST_INFO_LOG, AdLogger::$INFO);
   }
 
   /**
    * Configures the library to only log requests that return an error.
    */
   public function LogErrors() {
-    Logger::SetLogLevel(Logger::$SOAP_XML_LOG, Logger::$ERROR);
-    Logger::SetLogLevel(Logger::$REQUEST_INFO_LOG, Logger::$ERROR);
+    AdLogger::SetLogLevel(AdLogger::$SOAP_XML_LOG, AdLogger::$ERROR);
+    AdLogger::SetLogLevel(AdLogger::$REQUEST_INFO_LOG, AdLogger::$ERROR);
   }
 
   /**
    * Configures the library to log all requests.
    */
   public function LogAll() {
-    Logger::SetLogLevel(Logger::$SOAP_XML_LOG, Logger::$INFO);
-    Logger::SetLogLevel(Logger::$REQUEST_INFO_LOG, Logger::$INFO);
+    AdLogger::SetLogLevel(AdLogger::$SOAP_XML_LOG, AdLogger::$INFO);
+    AdLogger::SetLogLevel(AdLogger::$REQUEST_INFO_LOG, AdLogger::$INFO);
   }
 
   /**

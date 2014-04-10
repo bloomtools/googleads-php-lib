@@ -184,9 +184,9 @@ class AdWordsUser extends AdsUser {
    */
   protected function InitLogs() {
     parent::InitLogs();
-    Logger::LogToFile(ReportUtils::$LOG_NAME,
+    AdLogger::LogToFile(ReportUtils::$LOG_NAME,
         $this->GetLogsDirectory() . "/report_download.log");
-    Logger::SetLogLevel(ReportUtils::$LOG_NAME, Logger::$FATAL);
+    AdLogger::SetLogLevel(ReportUtils::$LOG_NAME, AdLogger::$FATAL);
   }
 
   /**
@@ -195,7 +195,7 @@ class AdWordsUser extends AdsUser {
    */
   public function LogDefaults() {
     parent::LogDefaults();
-    Logger::SetLogLevel(ReportUtils::$LOG_NAME, Logger::$ERROR);
+    AdLogger::SetLogLevel(ReportUtils::$LOG_NAME, AdLogger::$ERROR);
   }
 
   /**
@@ -204,7 +204,7 @@ class AdWordsUser extends AdsUser {
    */
   public function LogErrors() {
     parent::LogErrors();
-    Logger::SetLogLevel(ReportUtils::$LOG_NAME, Logger::$ERROR);
+    AdLogger::SetLogLevel(ReportUtils::$LOG_NAME, AdLogger::$ERROR);
   }
 
   /**
@@ -213,7 +213,7 @@ class AdWordsUser extends AdsUser {
    */
   public function LogAll() {
     parent::LogAll();
-    Logger::SetLogLevel(ReportUtils::$LOG_NAME, Logger::$INFO);
+    AdLogger::SetLogLevel(ReportUtils::$LOG_NAME, AdLogger::$INFO);
   }
 
   /**
